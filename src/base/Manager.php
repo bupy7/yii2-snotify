@@ -73,6 +73,7 @@ abstract class Manager extends Component
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string $title Title of notification.
+     * @return static
      */
     protected function add($type, $recipient, $message, $title)
     {
@@ -83,6 +84,7 @@ abstract class Manager extends Component
             'title' => $title,
             'created_at' => time(),
         ]);
+        return $this;
     }
 }
 
