@@ -30,15 +30,6 @@ class Manager extends BaseManager
     const TYPE_INFO = 4;
     
     /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-        register_shutdown_function([$this, 'flush']);
-    }
-    
-    /**
      * Adding notification of type success.
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
