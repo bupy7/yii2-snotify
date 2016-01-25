@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "bupy7\\notify\\server\\": "src"
+            "bupy7\\notify\\ss\\": "src"
         }
     }
 }

@@ -25,7 +25,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+License
+-------
 
-```php
-<?= \bupy7\snotify\AutoloadExample::widget(); ?>```
+yii2-snotify is released under the BSD 3-Clause License.
