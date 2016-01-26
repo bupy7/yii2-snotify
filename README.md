@@ -93,9 +93,7 @@ Yii::$app->snotify
     // info notify type
     ->addInfo($userId, $body, $title)
     // warning notify type
-    ->addWarning($userid, $body, $title)
-    // default notify type
-    ->addDefault($userId, $body, $title);
+    ->addWarning($userid, $body, $title);
 ```
 
 Profit! Your notification added to {{%notification}} table.
