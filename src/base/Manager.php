@@ -7,7 +7,6 @@ use yii\base\Component;
 use bupy7\notify\ss\forms\Notification;
 use bupy7\notify\ss\Module;
 use yii\db\Connection;
-use yii\db\Query;
 
 /**
  * Abstract class of manager notification component.
@@ -33,51 +32,6 @@ abstract class Manager extends Component
         parent::init();
         $this->module = Module::getInstance();
         register_shutdown_function([$this, 'flush']);
-    }
-    
-    /**
-     * Mark notification as read.
-     * @param integer|array $id Id(s) of notification(s). 
-     * @return boolean
-     */
-    public function markAsRead($id)
-    {
-        return (bool)$this->getDb()->createCommand()
-            ->update($this->getTableName(), ['readed' => true], ['id' => $id])
-            ->execute();
-    }
-    
-    /**
-     * Returns all unread notifications by recipient as an array.
-     * @param integer $recipient Id of recipient.
-     * @return array
-     */
-    public function findUnreadByRecipient($recipient)
-    {
-        return (new Query)
-            ->from($this->getTableName())
-            ->where([
-                'readed' => false,
-                'recipient' => $recipient,
-            ])
-            ->orderBy(['created_at' => SORT_DESC])
-            ->all();
-    }
-    
-    /**
-     * Return number of unread notifications by recipient.
-     * @param integer $recipient Id of recipient.
-     * @return integer
-     */
-    public function countUnreadByRecipient($recipient)
-    {
-        return (new Query)
-            ->from($this->getTableName())
-            ->where([
-                'readed' => false,
-                'recipient' => $recipient,
-            ])
-            ->count();
     }
     
     /**
