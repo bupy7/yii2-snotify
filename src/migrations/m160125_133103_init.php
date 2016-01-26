@@ -46,7 +46,8 @@ class m160125_133103_init extends Migration
         ], $tableOptions);
         $this->createIndex('index-1', $this->tableName, 'recipient');
         $this->createIndex('index-2', $this->tableName, 'readed');
-        $this->createIndex('index-3', $this->tableName, ['recipient', 'readed']);
+        $this->createIndex('index-3', $this->tableName, 'created_at');
+        $this->createIndex('index-4', $this->tableName, ['recipient', 'readed']);
     }
 
     /**
