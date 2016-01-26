@@ -54,12 +54,14 @@ abstract class Manager extends Component
      */
     public function findUnreadByRecipient($recipient)
     {
-        return $this->findAll([
+        return (new Query)
+            ->from($this->getTableName())
+            ->where([
                 'readed' => false,
                 'recipient' => $recipient,
-            ], [
-                'created_at',
-            ]);
+            ])
+            ->orderBy(['created_at'])
+            ->all();
     }
     
     /**
@@ -76,21 +78,6 @@ abstract class Manager extends Component
                 'recipient' => $recipient,
             ])
             ->count();
-    }
-    
-    /**
-     * Returns all results by condition as an array.
-     * @param string|array $condition the conditions that should be put in the WHERE part.
-     * @param string|array $orderBy the columns (and the directions) to be ordered by.
-     * @return array
-     */
-    public function findAll($condition = [], $orderBy = [])
-    {
-        return (new Query)
-            ->from($this->getTableName())
-            ->where($condition)
-            ->orderBy($orderBy)
-            ->all();
     }
     
     /**
