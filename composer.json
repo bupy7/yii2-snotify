@@ -19,6 +19,7 @@
             "email": "bupy765@gmail.com"
         }
     ],
+    "version": "1.0.0",
     "require": {
         "yiisoft/yii2": "*"
     },

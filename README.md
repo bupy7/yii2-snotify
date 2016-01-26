@@ -25,6 +25,102 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
+Register module to `modules` section in config file:
+
+```php
+[
+    'modules' => [
+        ...
+        
+        'snotifymodule' => [
+            'class' => 'bupy7\notify\ss\Module',
+        ],
+
+        ...
+    ],
+],
+```
+
+Add `snotifymodule` to `bootstrap` section in config file:
+
+```php
+[
+    'bootstrap' => [
+        ...
+        
+        'snotifymodule',
+    
+        ...
+    ],
+],
+```
+
+Register manager of snotify to `components` section in config file:
+
+```php
+[
+    'components' => [
+        ...
+
+        'snotify' => [
+            'class' => 'bupy7\notify\ss\components\Manager',
+        ],
+        
+        ...
+    ],
+],
+
+> You can rename a component and a module how do you like.
+
+Run migration:
+
+```
+php ./yii migrate/up --migrationPath=@bupy7/notify/ss/migrations
+```
+
+Adding notification message:
+
+```
+$userId = Yii::$app->user->id;
+$body = 'Example of text message';
+$title = 'Example of title message';
+Yii::$app->snotify
+    // success notify type
+    ->addSuccess($userId, $body, $title)
+    // danger notify type
+    ->addDanger($userId, $body, $title)
+    // info notify type
+    ->addInfo($userId, $body, $title)
+    // warning notify type
+    ->addWarning($userid, $body, $title)
+    // default notify type
+    ->addDefault($userId, $body, $title);
+```
+
+Profit! Your notification added to {{%notification}} table.
+
+Configuration
+-------------
+
+Module:
+
+
+```php
+[
+    'modules' => [
+        ...
+        
+        'snotifymodule' => [
+            'class' => 'bupy7\notify\ss\Module',
+            'tableName' => '{{%notification}}', // table name with notification messages
+            'db' => 'db', // database connection component config or name
+        ],
+
+        ...
+    ],
+],
+```
+
 License
 -------
 

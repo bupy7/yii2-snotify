@@ -28,6 +28,10 @@ class Manager extends BaseManager
      * Info notification type.
      */
     const TYPE_INFO = 4;
+    /**
+     * Default notification type.
+     */
+    const TYPE_DEFAULT = 5;
     
     /**
      * Adding notification of type success.
@@ -75,5 +79,17 @@ class Manager extends BaseManager
     public function addInfo($recipient, $message, $title = null)
     {
         return $this->add(self::TYPE_INFO, $recipient, $message, $title);
+    }
+    
+    /**
+     * Adding notification of type default.
+     * @param integer $recipient Id of recipient user.
+     * @param string $message Message of notification.
+     * @param string|null $title Title of notification.
+     * @return static
+     */
+    public function addDefault($recipient, $message, $title = null)
+    {
+        return $this->add(self::TYPE_DEFAULT, $recipient, $message, $title);
     }
 }

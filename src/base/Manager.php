@@ -4,7 +4,7 @@ namespace bupy7\notify\ss\base;
 
 use Yii;
 use yii\base\Component;
-use bupy7\notify\ss\objects\Notification;
+use bupy7\notify\ss\forms\Notification;
 use bupy7\notify\ss\Module;
 
 /**
@@ -56,12 +56,7 @@ abstract class Manager extends Component
         $sql = [];
         $params = [];
         for ($i = 0; $i != count($this->collection); $i++) {
-            $row = [
-                'type' => $this->collection[$i]->type,
-                'recipient' => $this->collection[$i]->recipient,
-                'message' => $this->collection[$i]->message,
-                'title' => $this->collection[$i]->title,
-            ];
+            $row = $this->collection[$i]->attributes;
             $sql[] = $queryBuilder->insert($this->module->tableName, $row, $params);
         }       
         return [implode(';' . PHP_EOL, $sql), $params];
@@ -77,13 +72,17 @@ abstract class Manager extends Component
      */
     protected function add($type, $recipient, $message, $title)
     {
-        $this->collection[] = new Notification([
+        $notification = new Notification([
             'type' => $type,
             'recipient' => $recipient,
             'message' => $message,
             'title' => $title,
+            'readed' => false,
             'created_at' => time(),
         ]);
+        if ($notification->validate()) {
+            $this->collection[] = $notification;
+        }
         return $this;
     }
 }
