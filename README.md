@@ -81,7 +81,7 @@ php ./yii migrate/up --migrationPath=@bupy7/notify/ss/migrations
 
 Adding notification message:
 
-```
+```php
 $userId = Yii::$app->user->id;
 $body = 'Example of text message';
 $title = 'Example of title message';
