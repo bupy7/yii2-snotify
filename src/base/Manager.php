@@ -60,7 +60,7 @@ abstract class Manager extends Component
                 'readed' => false,
                 'recipient' => $recipient,
             ])
-            ->orderBy(['created_at'])
+            ->orderBy(['created_at' => SORT_DESC])
             ->all();
     }
     
