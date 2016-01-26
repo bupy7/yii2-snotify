@@ -69,6 +69,7 @@ Register manager of snotify to `components` section in config file:
         ...
     ],
 ],
+```
 
 > You can rename a component and a module how do you like.
 
