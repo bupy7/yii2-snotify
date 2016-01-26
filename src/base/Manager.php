@@ -36,11 +36,11 @@ abstract class Manager extends Component
     }
     
     /**
-     * Mark notification as readed.
+     * Mark notification as read.
      * @param integer|array $id Id(s) of notification(s). 
      * @return boolean
      */
-    public function markAsReaded($id)
+    public function markAsRead($id)
     {
         return (bool)$this->getDb()->createCommand()
             ->update($this->getTableName(), ['readed' => true], ['id' => $id])
