@@ -81,7 +81,7 @@ abstract class Manager extends Component
             'recipient' => $recipient,
             'message' => $message,
             'title' => $title,
-            'readed' => false,
+            'unread' => true,
             'created_at' => time(),
         ]);
         if ($notification->validate()) {

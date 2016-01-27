@@ -41,13 +41,13 @@ class m160125_133103_init extends Migration
             'message' => Schema::TYPE_TEXT . ' NOT NULL',
             'type' => Schema::TYPE_SMALLINT . ' NOT NULL',
             'recipient' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'readed' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 0',
+            'unread' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
         $this->createIndex('index-1', $this->tableName, 'recipient');
         $this->createIndex('index-2', $this->tableName, 'readed');
         $this->createIndex('index-3', $this->tableName, 'created_at');
-        $this->createIndex('index-4', $this->tableName, ['recipient', 'readed']);
+        $this->createIndex('index-4', $this->tableName, ['recipient', 'unread']);
     }
 
     /**

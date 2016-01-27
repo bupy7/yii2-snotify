@@ -31,7 +31,7 @@ class Notification extends Model
     /**
      * @var boolean
      */
-    public $readed;
+    public $unread;
     /**
      * @var integer
      */
