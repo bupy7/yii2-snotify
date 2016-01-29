@@ -34,11 +34,12 @@ class Manager extends BaseManager
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string|null $title Title of notification.
+     * @param array $params Custom params of notification.
      * @return static
      */
-    public function addSuccess($recipient, $message, $title = null)
+    public function addSuccess($recipient, $message, $title = null, $params = [])
     {
-        return $this->add(self::TYPE_SUCCESS, $recipient, $message, $title);
+        return $this->add(self::TYPE_SUCCESS, $recipient, $message, $title, $params);
     }
     
     /**
@@ -46,11 +47,12 @@ class Manager extends BaseManager
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string|null $title Title of notification.
+     * @param array $params Custom params of notification.
      * @return static
      */
-    public function addDanger($recipient, $message, $title = null)
+    public function addDanger($recipient, $message, $title = null, $params = [])
     {
-        return $this->add(self::TYPE_DANGER, $recipient, $message, $title);
+        return $this->add(self::TYPE_DANGER, $recipient, $message, $title, $params);
     }
     
     /**
@@ -58,11 +60,12 @@ class Manager extends BaseManager
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string|null $title Title of notification.
+     * @param array $params Custom params of notification.
      * @return static
      */
-    public function addWarning($recipient, $message, $title = null)
+    public function addWarning($recipient, $message, $title = null, $params = [])
     {
-        return $this->add(self::TYPE_WARNING, $recipient, $message, $title);
+        return $this->add(self::TYPE_WARNING, $recipient, $message, $title, $params);
     }
     
     /**
@@ -70,10 +73,11 @@ class Manager extends BaseManager
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string|null $title Title of notification.
+     * @param array $params Custom params of notification.
      * @return static
      */
-    public function addInfo($recipient, $message, $title = null)
+    public function addInfo($recipient, $message, $title = null, $params = [])
     {
-        return $this->add(self::TYPE_INFO, $recipient, $message, $title);
+        return $this->add(self::TYPE_INFO, $recipient, $message, $title, $params);
     }
 }

@@ -72,9 +72,10 @@ abstract class Manager extends Component
      * @param integer $recipient Id of recipient user.
      * @param string $message Message of notification.
      * @param string $title Title of notification.
+     * @param array $params Custom params of notification.
      * @return static
      */
-    protected function add($type, $recipient, $message, $title)
+    protected function add($type, $recipient, $message, $title, $params = [])
     {
         $notification = new Notification([
             'type' => $type,
@@ -83,8 +84,10 @@ abstract class Manager extends Component
             'title' => $title,
             'unread' => true,
             'created_at' => time(),
+            'params' => $params,
         ]);
         if ($notification->validate()) {
+            $notification->params = serialize($notification->params);
             $this->collection[] = $notification;
         }
         return $this;

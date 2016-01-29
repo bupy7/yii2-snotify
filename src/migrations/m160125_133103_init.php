@@ -43,6 +43,7 @@ class m160125_133103_init extends Migration
             'recipient' => Schema::TYPE_INTEGER . ' NOT NULL',
             'unread' => Schema::TYPE_BOOLEAN . ' NOT NULL DEFAULT 1',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'params' => Schema::TYPE_BINARY,
         ], $tableOptions);
         $this->createIndex('index-1', $this->tableName, 'recipient');
         $this->createIndex('index-2', $this->tableName, 'unread');

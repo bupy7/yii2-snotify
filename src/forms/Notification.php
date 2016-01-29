@@ -4,9 +4,10 @@ namespace bupy7\notify\ss\forms;
 
 use Yii;
 use yii\base\Model;
+use bupy7\notify\ss\validators\IsArray as IsArrayValidator;
 
 /**
- * Model of notification to user.
+ * Form of notification to user.
  * @author Belosludcev Vasilij <https://github.com/bupy7>
  * @since 1.0.0
  */
@@ -36,6 +37,10 @@ class Notification extends Model
      * @var integer
      */
     public $created_at;
+    /**
+     * @var array
+     */
+    public $params = [];
     
     /**
      * @inheritdoc
@@ -47,6 +52,7 @@ class Notification extends Model
             [['title'], 'string', 'max' => 255],
             [['message'], 'string', 'max' => 65535],
             [['type', 'recipient'], 'integer'],
+            [['params'], IsArrayValidator::className()],
         ];
     }
 }
