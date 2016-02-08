@@ -48,7 +48,7 @@ class Notification extends Model
     public function rules()
     {
         return [
-            [['message', 'type', 'recipient', 'params'], 'required'],
+            [['message', 'type', 'recipient'], 'required'],
             [['title'], 'string', 'max' => 255],
             [['message'], 'string', 'max' => 65535],
             [['type', 'recipient'], 'integer'],
